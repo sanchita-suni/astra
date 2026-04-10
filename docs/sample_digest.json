@@ -1,0 +1,73 @@
+{
+  "opportunity_id": "uuid-1234-5678-91011",
+  "metadata": {
+    "title": "Edge AI Innovation Challenge",
+    "organization": "NVIDIA",
+    "source": "Devpost",
+    "type": "Hackathon",
+    "mode": "Remote",
+    "deadline_iso": "2024-12-10T23:59:00Z",
+    "apply_link": "https://devpost.com/software/edge-ai-challenge",
+    "raw_requirements": ["Python", "TensorFlow", "Raspberry Pi", "YOLOv8"]
+  },
+  "match_analysis": {
+    "overall_fit_percentage": 85,
+    "semantic_overlap_score": 90,
+    "user_trust_score": 80,
+    "ai_reasoning": "Why it fits: Focuses on deploying efficient models on edge devices—perfectly aligned with your recent Raspberry Pi commits and computer vision projects."
+  },
+  "execution_intel": {
+    "complexity_to_time_ratio": "High",
+    "estimated_hours_required": 40,
+    "recommended_start_date_iso": "2024-11-20T09:00:00Z",
+    "deadman_switch_alert": "Based on your past project velocity, you must start forming your team and setting up your Jetson environment by Nov 20th to meet the Dec 10th deadline."
+  },
+  "readiness_engine": {
+    "skill_gap_identified": ["YOLOv8", "TensorRT"],
+    "bridge_roadmap": [
+      {
+        "day": 1,
+        "focus": "YOLOv8 Architecture Basics",
+        "resources": [
+          {
+            "type": "Video",
+            "title": "Ultralytics YOLOv8 Crash Course",
+            "url": "https://youtube.com/watch?v=yolov8-crash-course"
+          },
+          {
+            "type": "Doc",
+            "title": "Official YOLOv8 Docs",
+            "url": "https://docs.ultralytics.com/"
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "focus": "TensorRT Optimization",
+        "resources": [
+          {
+            "type": "Repo",
+            "title": "NVIDIA TensorRT Quickstart",
+            "url": "https://github.com/NVIDIA/TensorRT"
+          }
+        ]
+      }
+    ]
+  },
+  "teammate_matchmaker": {
+    "suggested_super_team": [
+      {
+        "user_id": "uuid-user-999",
+        "name": "Alex Backend",
+        "role_filled": "FastAPI / Database Expert",
+        "compatibility_score": 92
+      },
+      {
+        "user_id": "uuid-user-888",
+        "name": "Sam Design",
+        "role_filled": "UI/UX & Presentation",
+        "compatibility_score": 88
+      }
+    ]
+  }
+}

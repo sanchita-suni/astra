@@ -1,0 +1,65 @@
+name: astra
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: astra-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: astra
+      POSTGRES_PASSWORD: astra
+      POSTGRES_DB: astra
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U astra -d astra"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: astra-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: astra-ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    # GPU passthrough is optional. Uncomment if you have NVIDIA + nvidia-container-toolkit:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  # One-shot service: pulls the default LLM into the ollama volume on first up.
+  # After it succeeds it exits cleanly. Re-run on demand: `docker compose up ollama-pull`.
+  ollama-pull:
+    image: ollama/ollama:latest
+    container_name: astra-ollama-pull
+    depends_on:
+      - ollama
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        sleep 5
+        OLLAMA_HOST=http://ollama:11434 ollama pull llama3.1:8b-instruct-q4_K_M
+    restart: "no"
+
+volumes:
+  postgres_data:
+  redis_data:
+  ollama_models:

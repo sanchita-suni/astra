@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: astra-api
+    runtime: python
+    region: oregon
+    buildCommand: pip install uv && uv sync --all-packages && uv pip install python-jose pypdf
+    startCommand: .venv/bin/python -m uvicorn astra_api.main:app --host 0.0.0.0 --port $PORT --app-dir apps/api
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: astra-db
+          property: connectionString
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GITHUB_CLIENT_ID
+        sync: false
+      - key: GITHUB_CLIENT_SECRET
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: SMTP_FROM
+        sync: false
+      - key: API_CORS_ORIGINS
+        value: "https://astra-app.vercel.app,http://localhost:3000"
+    healthCheckPath: /health
+
+databases:
+  - name: astra-db
+    databaseName: astra
+    user: astra
+    region: oregon
+    plan: free

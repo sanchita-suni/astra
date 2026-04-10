@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+.python-version
+
+# uv
+uv.lock
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.pnpm-debug.log*
+.npm
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Astra runtime data
+data/
+*.faiss
+*.index
+ollama_models/
+postgres_data/
+redis_data/
+
+# Generated TS types
+apps/web/types/generated/
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+dist/
+build/

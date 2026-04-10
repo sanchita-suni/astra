@@ -1,0 +1,67 @@
+<!doctype html>
+<!--
+  Synthetic but Devpost-shaped fixture used by the Day 2 spider tests.
+
+  Selector contract (the parser depends on these — keep stable):
+    h1.hackathon-name             -> metadata.title
+    .organization-name            -> metadata.organization
+    .submission-period time       -> metadata.deadline_iso (datetime attr)
+    a.apply-link                  -> metadata.apply_link (href)
+    .location-mode                -> metadata.mode
+    ul.themes li                  -> metadata.raw_requirements
+    .opportunity-id               -> opportunity_id (data attr)
+
+  This file is intentionally minimal — saved by hand from a real listing,
+  trimmed of analytics/JS bundles. Refresh instructions in fixtures/README.md.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Edge AI Innovation Challenge | Devpost</title>
+  </head>
+  <body class="devpost challenge-show">
+    <main class="challenge" data-source="devpost">
+      <header class="challenge-header">
+        <span class="opportunity-id" data-id="devpost-edge-ai-innovation-challenge"></span>
+        <h1 class="hackathon-name">Edge AI Innovation Challenge</h1>
+        <p class="organization-name">NVIDIA</p>
+        <p class="location-mode">Online (Remote)</p>
+      </header>
+
+      <section class="submission-period">
+        <p>
+          Submissions due
+          <time datetime="2026-12-10T23:59:00Z">December 10, 2026 11:59 PM UTC</time>
+        </p>
+      </section>
+
+      <section class="overview">
+        <p>
+          Build a real-time computer-vision app that runs on the edge —
+          Raspberry Pi, Jetson Nano, or Coral. Top entries ship a working demo
+          and a short technical write-up.
+        </p>
+      </section>
+
+      <section class="requirements">
+        <h2>Required tech</h2>
+        <ul class="themes">
+          <li>Python</li>
+          <li>TensorFlow</li>
+          <li>Raspberry Pi</li>
+          <li>YOLOv8</li>
+        </ul>
+      </section>
+
+      <footer class="cta">
+        <a
+          class="apply-link"
+          href="https://devpost.com/software/edge-ai-innovation-challenge"
+          rel="noopener"
+        >
+          Submit your project
+        </a>
+      </footer>
+    </main>
+  </body>
+</html>
